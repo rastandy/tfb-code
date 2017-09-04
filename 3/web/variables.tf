@@ -4,7 +4,7 @@ variable "region" {
 
 variable "key_name" {
   description = "The AWS key pair to use for resources."
-  default     = "james"
+  default     = "rastandy"
 }
 
 variable "ami" {

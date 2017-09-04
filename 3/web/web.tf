@@ -9,10 +9,15 @@ module "vpc" {
   public_subnet = "10.0.1.0/24"
 }
 
+resource "aws_key_pair" "ssh_key" {
+  key_name = "rastandy"
+  public_key = "${file("~/.ssh/id_rsa.pub")}"
+}
+
 resource "aws_instance" "web" {
   ami                         = "${lookup(var.ami, var.region)}"
   instance_type               = "${var.instance_type}"
-  key_name                    = "${var.key_name}"
+  key_name                    = "${aws_key_pair.ssh_key.key_name}"
   subnet_id                   = "${module.vpc.public_subnet_id}"
   private_ip                  = "${var.instance_ips[count.index]}"
   user_data                   = "${file("files/web_bootstrap.sh")}"
