@@ -9,12 +9,12 @@ variable "environment" {
 
 variable "key_name" {
   description = "The AWS key pair to use for resources."
-  default     = "james"
+  default     = "rastandy"
 }
 
 variable "key_path" {
   description = "The location of the AWS key file to use for connections."
-  default     = "/Users/james/.ssh/james_aws"
+  default     = "/Users/arusso/.ssh/id_rsa"
 }
 
 variable "ami" {
